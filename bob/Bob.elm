@@ -19,16 +19,13 @@ isUpperCase message =
 
 
 isEmpty : String -> Bool
-isEmpty message =
-    if String.length (String.trim message) == 0 then
-        True
-    else
-        False
+isEmpty =
+    contains (regex "^\\s*$")
 
 
 isAlphabeticalChar : Char -> Bool
 isAlphabeticalChar character =
-    if Regex.contains (Regex.regex "[A-Za-z]") (toString character) then
+    if contains (regex "[A-Za-z]") (toString character) then
         True
     else
         False
