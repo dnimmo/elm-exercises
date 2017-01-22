@@ -10,12 +10,19 @@ isQuestion =
     String.endsWith "?"
 
 
-isUpperCase : String -> Bool
-isUpperCase message =
-    if (String.toUpper message) == message && not (noCharacters message) then
-        True
-    else
-        False
+isAllUpperCase : String -> Bool
+isAllUpperCase message =
+    hasUpper message && not (hasLower message)
+
+
+hasUpper : String -> Bool
+hasUpper =
+    contains (regex "[A-Z]")
+
+
+hasLower : String -> Bool
+hasLower =
+    contains (regex "[a-z]")
 
 
 isEmpty : String -> Bool
@@ -43,9 +50,9 @@ hey : String -> String
 hey message =
     if isEmpty message then
         "Fine. Be that way!"
-    else if isQuestion message && not (isUpperCase message) then
+    else if isQuestion message && not (isAllUpperCase message) then
         "Sure."
-    else if isUpperCase message && not (noCharacters message) then
+    else if isAllUpperCase message && not (noCharacters message) then
         "Whoa, chill out!"
     else
         "Whatever."
