@@ -1,13 +1,17 @@
 module Bob exposing (hey)
 
-import Char
-import String
+import String exposing (endsWith)
 import Regex exposing (contains, regex)
+
+
+isEmpty : String -> Bool
+isEmpty =
+    contains (regex "^\\s*$")
 
 
 isQuestion : String -> Bool
 isQuestion =
-    String.endsWith "?"
+    endsWith "?"
 
 
 isAllUpperCase : String -> Bool
@@ -25,18 +29,13 @@ hasLower =
     contains (regex "[a-z]")
 
 
-isEmpty : String -> Bool
-isEmpty =
-    contains (regex "^\\s*$")
-
-
 hey : String -> String
 hey message =
     if isEmpty message then
         "Fine. Be that way!"
-    else if isQuestion message && not (isAllUpperCase message) then
-        "Sure."
     else if isAllUpperCase message then
         "Whoa, chill out!"
+    else if isQuestion message then
+        "Sure."
     else
         "Whatever."
