@@ -1,12 +1,12 @@
 module Bob exposing (hey)
 
 import Regex exposing (contains, regex)
-import String exposing (endsWith)
+import String exposing (endsWith, trim)
 
 
 isEmpty : String -> Bool
-isEmpty =
-    contains (regex "^\\s*$")
+isEmpty message =
+    trim message == ""
 
 
 isQuestion : String -> Bool
