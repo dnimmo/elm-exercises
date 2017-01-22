@@ -1,7 +1,7 @@
 module Bob exposing (hey)
 
-import String exposing (endsWith)
 import Regex exposing (contains, regex)
+import String exposing (endsWith)
 
 
 isEmpty : String -> Bool
