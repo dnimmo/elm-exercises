@@ -1,16 +1,13 @@
-module Bob exposing (..)
+module Bob exposing (hey)
 
 import Char
 import String
-import Regex
+import Regex exposing (contains, regex)
 
 
 isQuestion : String -> Bool
-isQuestion message =
-    if String.endsWith "?" message then
-        True
-    else
-        False
+isQuestion =
+    String.endsWith "?"
 
 
 isUpperCase : String -> Bool
