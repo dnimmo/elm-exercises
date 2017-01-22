@@ -19,9 +19,19 @@ isUpperCase message =
         False
 
 
+isEmpty : String -> Bool
+isEmpty message =
+    if String.length (String.trim message) == 0 then
+        True
+    else
+        False
+
+
 hey : String -> String
 hey message =
-    if isUpperCase message then
+    if isEmpty message then
+        "Fine. Be that way!"
+    else if isUpperCase message then
         "Whoa, chill out!"
     else if isQuestion message then
         "Sure."
