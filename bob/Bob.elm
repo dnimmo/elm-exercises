@@ -15,7 +15,7 @@ isQuestion message =
 
 isUpperCase : String -> Bool
 isUpperCase message =
-    if (String.toUpper message) == message then
+    if (String.toUpper message) == message && not (noCharacters message) then
         True
     else
         False
