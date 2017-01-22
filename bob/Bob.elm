@@ -1,6 +1,8 @@
 module Bob exposing (..)
 
+import Char
 import String
+import Regex
 
 
 isQuestion : String -> Bool
@@ -27,13 +29,29 @@ isEmpty message =
         False
 
 
+isAlphabeticalChar : Char -> Bool
+isAlphabeticalChar character =
+    if Regex.contains (Regex.regex "[A-Za-z]") (toString character) then
+        True
+    else
+        False
+
+
+noCharacters : String -> Bool
+noCharacters message =
+    if String.length (String.filter isAlphabeticalChar message) > 0 then
+        False
+    else
+        True
+
+
 hey : String -> String
 hey message =
     if isEmpty message then
         "Fine. Be that way!"
-    else if isUpperCase message then
-        "Whoa, chill out!"
-    else if isQuestion message then
+    else if isQuestion message && not (isUpperCase message) then
         "Sure."
+    else if isUpperCase message && not (noCharacters message) then
+        "Whoa, chill out!"
     else
         "Whatever."
