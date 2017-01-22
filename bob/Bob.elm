@@ -30,29 +30,13 @@ isEmpty =
     contains (regex "^\\s*$")
 
 
-isAlphabeticalChar : Char -> Bool
-isAlphabeticalChar character =
-    if contains (regex "[A-Za-z]") (toString character) then
-        True
-    else
-        False
-
-
-noCharacters : String -> Bool
-noCharacters message =
-    if String.length (String.filter isAlphabeticalChar message) > 0 then
-        False
-    else
-        True
-
-
 hey : String -> String
 hey message =
     if isEmpty message then
         "Fine. Be that way!"
     else if isQuestion message && not (isAllUpperCase message) then
         "Sure."
-    else if isAllUpperCase message && not (noCharacters message) then
+    else if isAllUpperCase message then
         "Whoa, chill out!"
     else
         "Whatever."
