@@ -22,7 +22,13 @@ divisibleBy division number =
 
 
 isLeapYear year =
-    if divisibleByFour year && not (divisibleByOneHundred year) || (divisibleByOneHundred year && divisibleByFourHundred year) then
+    if
+        divisibleByFour year
+            && not (divisibleByOneHundred year)
+            || (divisibleByOneHundred year
+                    && divisibleByFourHundred year
+               )
+    then
         True
     else
         False
