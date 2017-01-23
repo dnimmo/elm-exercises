@@ -1,12 +1,28 @@
 module Leap exposing (isLeapYear)
 
 
-divisibleByFour number =
-    rem number 4 == 0
+divisibleByFour : Int -> Bool
+divisibleByFour =
+    divisibleBy 4
+
+
+divisibleByOneHundred : Int -> Bool
+divisibleByOneHundred =
+    divisibleBy 100
+
+
+divisibleByFourHundred : Int -> Bool
+divisibleByFourHundred =
+    divisibleBy 400
+
+
+divisibleBy : Int -> Int -> Bool
+divisibleBy division number =
+    rem number division == 0
 
 
 isLeapYear year =
-    if divisibleByFour year then
+    if divisibleByFour year && not (divisibleByOneHundred year) || (divisibleByOneHundred year && divisibleByFourHundred year) then
         True
     else
         False
