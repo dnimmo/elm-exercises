@@ -16,7 +16,8 @@ isQuestion =
 
 isAllUpperCase : String -> Bool
 isAllUpperCase message =
-    hasUpper message && not (hasLower message)
+    hasUpper message
+        && not (hasLower message)
 
 
 hasUpper : String -> Bool
