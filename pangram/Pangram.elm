@@ -12,8 +12,8 @@ isPangram sentence =
         sentenceInLowerCase =
             String.toLower sentence
 
-        lettersFound =
+        allLettersFound =
             alphabet
                 |> List.all (\letter -> String.contains letter sentenceInLowerCase)
     in
-        lettersFound
+        allLettersFound
