@@ -31,18 +31,6 @@ numberOfEqualSides x y z =
             0
 
 
-identifyTriangleType x y z =
-    case numberOfEqualSides x y z of
-        3 ->
-            Equilateral
-
-        2 ->
-            Isosceles
-
-        _ ->
-            Scalene
-
-
 triangleKind : Float -> Float -> Float -> Result String Triangle
 triangleKind x y z =
     let
@@ -57,4 +45,14 @@ triangleKind x y z =
         else if inequalityError then
             Err "Violates inequality"
         else
-            Ok (identifyTriangleType x y z)
+            Ok
+                (case numberOfEqualSides x y z of
+                    3 ->
+                        Equilateral
+
+                    2 ->
+                        Isosceles
+
+                    _ ->
+                        Scalene
+                )
