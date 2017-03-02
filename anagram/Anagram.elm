@@ -26,9 +26,6 @@ detect wordToMatch potentialMatches =
         anagrams =
             potentialMatches
                 |> List.filter (\word -> areAnagrams word wordToMatch)
-
-        anagramsWithoutOriginalWord =
-            anagrams
-                |> List.filter (\word -> not (areSameWord word wordToMatch))
     in
-        anagramsWithoutOriginalWord
+        anagrams
+            |> List.filter (\word -> not (areSameWord word wordToMatch))
